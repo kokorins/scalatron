@@ -9,14 +9,13 @@ import ScalatronApiTest._
 import org.specs2.execute.Result
 import scalatron.scalatron.impl.FileUtil
 
-class ScalatronApiSpec extends mutable.Specification
+class ScalatronApiSpec extends org.specs2.mutable.Specification
 {
     //------------------------------------------------------------------------------------------
     // test (web) user management
     //------------------------------------------------------------------------------------------
 
     "Scalatron API running against a temporary /users directory" should {
-
         "initially contain only the Administrator user" in {
             runTest((scalatron: Scalatron, usersBaseDirPath: String, samplesBaseDirPath: String, pluginBaseDirPath: String) => {
                 scalatron.users().map(_.name).mkString(",") mustEqual "Administrator" and

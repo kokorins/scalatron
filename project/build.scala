@@ -1,11 +1,9 @@
 import sbt._
 import Keys._
-import sbtassembly.Plugin._
-import AssemblyKeys._
-
+import sbtassembly.AssemblyPlugin.autoImport._
 
 object build extends Build {
-    def standardSettings = Defaults.defaultSettings ++ src ++ assemblySettings ++ Seq (
+    def standardSettings = Defaults.defaultSettings ++ src ++ Seq (
         mergeStrategy in assembly <<= (mergeStrategy in assembly) { (old) => {
             case "plugin.properties" => MergeStrategy.first
             case "about.html" => MergeStrategy.first
@@ -59,7 +57,7 @@ object build extends Build {
     lazy val main = Project("Scalatron", file("Scalatron"),
         settings = standardSettings ++ Seq(
             libraryDependencies ++= Seq(
-                "org.scala-lang" % "scala-compiler" % "2.9.1",
+                "org.scala-lang" % "scala-compiler" % "2.10.4",
                 "com.typesafe.akka" % "akka-actor" % "2.0",
                 "org.eclipse.jetty.aggregate" % "jetty-webapp" % "7.6.2.v20120308" intransitive,
                 "org.codehaus.jackson" % "jackson-jaxrs" % "1.9.2",
@@ -67,9 +65,9 @@ object build extends Build {
                 "javax.servlet" % "servlet-api" % "2.5",
                 "org.eclipse.jgit" % "org.eclipse.jgit" % "1.3.0.201202151440-r",
                 "org.eclipse.jgit" % "org.eclipse.jgit.http.server" % "1.3.0.201202151440-r",
-                "org.scalatest" %% "scalatest" % "1.7.2" % "test",
+                "org.scalatest" %% "scalatest" % "2.2.5" % "test",
                 "org.testng" % "testng" % "6.5.1" % "test",
-                "org.specs2" %% "specs2" % "1.9" % "test",
+                "org.specs2" %% "specs2" % "3.3.1" % "test",
                 "org.specs2" %% "specs2-scalaz-core" % "6.0.1"
             ),
             resolvers += "JGit Repository" at "http://download.eclipse.org/jgit/maven"
@@ -112,8 +110,8 @@ object build extends Build {
     } toMap
 
     // TODO How can we do this automatically?!?
-    lazy val referenceBot = samples("Example Bot 01 - Reference")
-    lazy val tagTeamBot = samples("Example Bot 02 - TagTeam")
+    lazy val referenceBot = samples("Example_Bot_01_-_Reference")
+    lazy val tagTeamBot = samples("Example_Bot_02_-_TagTeam")
 
     val dist = TaskKey[Unit]("dist", "Makes the distribution zip file")
     val distTask = dist <<= (version, scalaVersion) map { (scalatronVersion, version) =>
