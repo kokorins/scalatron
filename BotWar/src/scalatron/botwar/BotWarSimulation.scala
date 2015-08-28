@@ -3,8 +3,9 @@
   */
 package scalatron.botwar
 
+import scala.concurrent.ExecutionContext
 import scala.util.Random
-import akka.dispatch.ExecutionContext
+//import akka.dispatch.ExecutionContext
 import akka.actor.ActorSystem
 import scalatron.core.{EntityController, Simulation}
 
