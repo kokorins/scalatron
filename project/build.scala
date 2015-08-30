@@ -56,7 +56,9 @@ object build extends Build {
   lazy val main = Project("Scalatron", file("Scalatron"),
     settings = standardSettings ++ Seq(
       libraryDependencies ++= Seq(
-        "org.scala-lang" % "scala-compiler" % "2.10.4",
+        "org.scala-lang" % "scala-library" % "2.10.5",
+        "org.scala-lang" % "scala-compiler" % "2.10.5",
+        "org.scala-lang" % "scala-reflect" % "2.10.5",
         "com.typesafe.akka" %% "akka-actor" % "2.3.12",
         "org.eclipse.jetty.aggregate" % "jetty-webapp" % "7.6.2.v20120308" intransitive,
         "org.codehaus.jackson" % "jackson-jaxrs" % "1.9.2",
@@ -64,8 +66,8 @@ object build extends Build {
         "javax.servlet" % "servlet-api" % "2.5",
         "org.eclipse.jgit" % "org.eclipse.jgit" % "1.3.0.201202151440-r",
         "org.eclipse.jgit" % "org.eclipse.jgit.http.server" % "1.3.0.201202151440-r",
-        "org.scalatest" %% "scalatest" % "2.2.5" % "test",
-        "org.testng" % "testng" % "6.5.1" % "test",
+//        "org.scalatest" %% "scalatest" % "2.2.5" % "test",
+//        "org.testng" % "testng" % "6.5.1" % "test",
 //        "org.specs2" %% "specs2" % "3.6.4" % "test",
         "org.specs2" %% "specs2-core" % "3.6.4" % "test",
         "org.specs2" %% "specs2-matcher" % "3.6.4" % "test",
